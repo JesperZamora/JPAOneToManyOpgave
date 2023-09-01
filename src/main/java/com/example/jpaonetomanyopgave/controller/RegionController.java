@@ -9,4 +9,18 @@ public class RegionController {
     public RegionController(ApiRegionService regionService) {
         this.regionService = regionService;
     }
+
+    // TODO Endpoints - in assignment 1.::
+    // TODO getRegions
+
+    // TODO postRegions
+
+    // TODO putRegions
+
+    // TODO deleteRegions
+
+
+
+    // TODO Endpoint - in assignment 2.::
+    // TODO getKommuneNamesByRegionCode
 }
