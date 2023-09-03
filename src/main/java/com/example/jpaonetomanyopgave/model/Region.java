@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity
 @Table(name = "regioner")
 public class Region {
-    @Id @Column(name = "r_kode")
+    @Id @Column(name = "r_code")
     private String kode;
     @Column(name = "r_name")
     private String navn;

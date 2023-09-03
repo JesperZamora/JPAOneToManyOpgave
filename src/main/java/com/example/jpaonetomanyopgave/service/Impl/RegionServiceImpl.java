@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.example.jpaonetomanyopgave.service.Impl.apiEnum.ApiData.URL_REGION;
 
@@ -37,5 +38,40 @@ public class RegionServiceImpl implements ApiRegionService {
         persistRegions(regions);
 
         return regions;
+    }
+
+    @Override
+    public List<Region> findRegionByNameOrCode(String foo) {
+        return regionRepository.findRegionsByNameOrCode(foo);
+    }
+
+    @Override
+    public Optional<Region> findRegionOnlyBySpecificCode(String foo) {
+        return regionRepository.findById(foo);
+    }
+
+    @Override
+    public Region createRegion(Region newRegion) {
+        return regionRepository.save(newRegion);
+    }
+
+    @Override
+    public Object updateRegion(String code, Region updateRegion) {
+        Optional<Region> region = regionRepository.findById(code);
+        if(region.isPresent()) {
+            updateRegion.setKode(code);
+            return regionRepository.save(updateRegion);
+        }
+        return "Region #" + code + "was not found.";
+    }
+
+    @Override
+    public String deleteRegion(String code) {
+        Optional<Region> region = regionRepository.findById(code);
+        if(region.isPresent()) {
+            regionRepository.delete(region.get());
+            return "Region #" + code + " has been deleted.";
+        }
+        return "Region #" + code + "was not found and could not be deleted.";
     }
 }
