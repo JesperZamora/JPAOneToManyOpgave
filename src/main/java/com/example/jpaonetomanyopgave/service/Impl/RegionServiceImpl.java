@@ -1,6 +1,5 @@
 package com.example.jpaonetomanyopgave.service.Impl;
 
-import com.example.jpaonetomanyopgave.model.Kommune;
 import com.example.jpaonetomanyopgave.model.KommuneNamesDTO;
 import com.example.jpaonetomanyopgave.model.Region;
 import com.example.jpaonetomanyopgave.repositories.RegionRepository;

@@ -1,7 +1,6 @@
 package com.example.jpaonetomanyopgave.controller;
 
 import com.example.jpaonetomanyopgave.model.Kommune;
-import com.example.jpaonetomanyopgave.model.Region;
 import com.example.jpaonetomanyopgave.service.ApiKommuneService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

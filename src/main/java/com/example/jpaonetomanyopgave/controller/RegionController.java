@@ -2,9 +2,7 @@ package com.example.jpaonetomanyopgave.controller;
 
 import com.example.jpaonetomanyopgave.model.KommuneNamesDTO;
 import com.example.jpaonetomanyopgave.model.Region;
-import com.example.jpaonetomanyopgave.repositories.RegionRepository;
 import com.example.jpaonetomanyopgave.service.ApiRegionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
