@@ -1,5 +1,6 @@
 package com.example.jpaonetomanyopgave.service;
 
+import com.example.jpaonetomanyopgave.model.KommuneNamesDTO;
 import com.example.jpaonetomanyopgave.model.Region;
 
 import java.util.List;
@@ -15,7 +16,8 @@ public interface ApiRegionService {
 
     Region createRegion(Region region);
 
-    Object updateRegion(String id, Region region);
+    Optional<Region> updateRegion(String id, Region region);
 
     String deleteRegion(String code);
+    Optional<KommuneNamesDTO> kommuneNames(String code);
 }

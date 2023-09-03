@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface RegionRepository extends JpaRepository<Region,String> {
 
-    @Query("SELECT p FROM Region p WHERE p.navn LIKE CONCAT('%', :query, '%') AND p.kode LIKE CONCAT('%', :query, '%')")
+
+    @Query("SELECT p FROM Region p WHERE p.navn LIKE CONCAT('%', :query, '%') or p.kode LIKE CONCAT('%', :query, '%')")
     List<Region> findRegionsByNameOrCode(String query);
 }

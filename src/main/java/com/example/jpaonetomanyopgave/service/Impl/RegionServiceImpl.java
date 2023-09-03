@@ -1,5 +1,7 @@
 package com.example.jpaonetomanyopgave.service.Impl;
 
+import com.example.jpaonetomanyopgave.model.Kommune;
+import com.example.jpaonetomanyopgave.model.KommuneNamesDTO;
 import com.example.jpaonetomanyopgave.model.Region;
 import com.example.jpaonetomanyopgave.repositories.RegionRepository;
 import com.example.jpaonetomanyopgave.service.ApiRegionService;
@@ -11,6 +13,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static com.example.jpaonetomanyopgave.service.Impl.apiEnum.ApiData.URL_REGION;
 
@@ -56,13 +59,13 @@ public class RegionServiceImpl implements ApiRegionService {
     }
 
     @Override
-    public Object updateRegion(String code, Region updateRegion) {
+    public Optional<Region> updateRegion(String code, Region updateRegion) {
         Optional<Region> region = regionRepository.findById(code);
         if(region.isPresent()) {
             updateRegion.setKode(code);
-            return regionRepository.save(updateRegion);
+            return Optional.of(regionRepository.save(updateRegion));
         }
-        return "Region #" + code + "was not found.";
+        return Optional.empty();
     }
 
     @Override
@@ -70,8 +73,19 @@ public class RegionServiceImpl implements ApiRegionService {
         Optional<Region> region = regionRepository.findById(code);
         if(region.isPresent()) {
             regionRepository.delete(region.get());
-            return "Region #" + code + " has been deleted.";
+            return "Region # " + code + " has been deleted.";
         }
-        return "Region #" + code + "was not found and could not be deleted.";
+        return "Region # " + code + " was not found and could not be deleted.";
     }
+
+    @Override
+    public Optional<KommuneNamesDTO> kommuneNames(String code) {
+        Optional<Region> region  = regionRepository.findById(code);
+        if(region.isPresent()) {
+            return Optional.of(new KommuneNamesDTO(region.get().getKommuneSet()));
+        }
+        return Optional.empty();
+    }
+
+
 }
