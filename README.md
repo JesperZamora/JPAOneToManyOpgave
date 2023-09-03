@@ -79,6 +79,9 @@ localhost:8080/regioner/2001/delete
 
 # Endpoint - in assignment 2::
 #### getKommuneNamesByRegionCode
+This is made with DTO (KommuneNamesDTO) where the class loops through the Set when given a Region object through the constructor puts it in a List<>: 
+<br>
+
 localhost:8080/kommunenavne/1081
 
     {
@@ -97,3 +100,30 @@ localhost:8080/kommunenavne/1081
         ]
     }
  
+<br>
+
+#### getKommuneNamesByRegionCode 2
+This is made with a @Query in the RegionReposiotry interface: 
+
+      @Query("SELECT p.navn FROM Kommune p WHERE p.region.kode LIKE :query")
+      List<String> findAllKommuneNamesByRegionCode(String query);
+
+<br>
+
+localhost:8080/regioner/1081/kommunenavne
+
+    {
+        "names": [
+            "Brønderslev",
+            "Hjørring",
+            "Thisted",
+            "Læsø",
+            "Morsø",
+            "Aalborg",
+            "Vesthimmerlands",
+            "Rebild",
+            "Jammerbugt",
+            "Frederikshavn",
+            "Mariagerfjord"
+        ]
+    }
