@@ -20,4 +20,6 @@ public interface ApiRegionService {
 
     String deleteRegion(String code);
     Optional<KommuneNamesDTO> kommuneNames(String code);
+
+    List<String> kommuneNames1(String code);
 }

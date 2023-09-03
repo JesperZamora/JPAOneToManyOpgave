@@ -87,5 +87,10 @@ public class RegionServiceImpl implements ApiRegionService {
         return Optional.empty();
     }
 
+    @Override
+    public List<String> kommuneNames1(String code) {
+        return regionRepository.findAllKommuneNamesByRegionCode(code);
+    }
+
 
 }
